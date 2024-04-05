@@ -5,13 +5,16 @@ import { useAuth } from '../Hooks/authHook'
 function PrivateRoute() {
     const { contextToken } = useAuth()
 
+
     // if token is present and login is true allow components to pass through <Outlet/>
-    // or else redirect to login path
+    // or else redirect to login path 
+
   return (
     <>
-      {
-        contextToken?.token && contextToken?.login ? <Outlet/> : <Navigate to={`/login`}/>
-      }
+        { 
+            contextToken?.token || contextToken?.login ? <Outlet/> : <Navigate to={`/login`} />
+            // contextToken?.token && contextToken?.login ? <Outlet/> : <Navigate to={`/login`} />
+        }
     </>
   )
 }
